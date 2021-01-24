@@ -15,6 +15,7 @@ export const Years = [
   2019,
   2020
 ];
+const Limit = 100;
 export const Launch = ["True", "False"];
 export const Landing = ["True", "False"];
-export const Url = "https://api.spacexdata.com/v3/launches?limit=8";
+export const Url = `https://api.spacexdata.com/v3/launches?limit=${Limit}`;

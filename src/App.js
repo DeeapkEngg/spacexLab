@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Tiles from "./Tiles";
 import Filter from "./Filter";
 import { Years, Launch, Landing, Url } from "./constant";
-import "./styles.css";
+import "./styles.scss";
 
 export default function App() {
   const [selectedYear, handleSelectedYear] = useState("");
@@ -36,6 +36,15 @@ export default function App() {
     }
   };
 
+  const toggle = (funct, item, value, flag) => {
+    const values = flag ? "" : item;
+    if (value !== item) {
+      funct(values);
+    } else {
+      funct(values);
+    }
+  };
+
   useEffect(() => {
     callingApi();
   }, [selectedYear, selectedLaunch, selectedLanding]);
@@ -47,25 +56,31 @@ export default function App() {
       </div>
       <div className="container">
         <section className="filterSection">
-          <div className="filter-content">
+          <div className="filter">
             <p>Filters</p>
             <Filter
               placeholder={"Launch Year"}
               value={selectedYear}
               data={Years}
-              handleSelection={handleSelectedYear}
+              handleSelection={(item, value, flag) =>
+                toggle(handleSelectedYear, item, value, flag)
+              }
             />
             <Filter
               placeholder={"Successful Launch"}
               value={selectedLaunch}
               data={Launch}
-              handleSelection={handleSelectedLaunch}
+              handleSelection={(item, value, flag) =>
+                toggle(handleSelectedLaunch, item, value, flag)
+              }
             />
             <Filter
               placeholder={"Successful Landing"}
               value={selectedLanding}
               data={Landing}
-              handleSelection={handleSelectedLanding}
+              handleSelection={(item, value, flag) =>
+                toggle(handleSelectedLanding, item, value, flag)
+              }
             />
           </div>
         </section>
