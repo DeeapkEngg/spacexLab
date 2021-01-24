@@ -51,8 +51,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="filter-heading">
-        <h3>SpaceX Launch Programs</h3>
+      <div className="heading">
+        <h2>SpaceX Launch Programs</h2>
       </div>
       <div className="container">
         <section className="filterSection">
